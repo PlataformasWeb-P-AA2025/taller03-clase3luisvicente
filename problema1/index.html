@@ -1,22 +1,56 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="estilos/estilos.css" type="text/css" />
-    <title>Ejemplo HTML5 y CSS3</title>
-  </head>
-  <body>
-    <div class="uno">
-     <p class="mensaje">Mensaje</p> 
-    </div>
-    <div class="dos">
-      <p class="comentario">Comentario1</p>
-      <p class="comentario">Comentario2</p>
-      <p class="comentario">Comentario3</p>
-      <p class="comentario">Comentario4</p>
-      <p class="comentario">Comentario5</p>
-      <p class="comentario">Comentario6</p>
-    </div>
-  </body>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mensaje y Comentarios</title>
+  <style>
+
+      {font-family: Arial, sans-serif;
+    }
+
+    .mensaje-container {
+      border: 3px solid #0000ff; /* azul */
+      background-color: #f0f0f0; /* gris claro */
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .mensaje-inner {
+      border: 2px solid #ffd700; /* dorado */
+      padding: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #f0f0f0;
+    }
+
+    .comentarios {
+      background-color: #cd853f; /* peru */
+      border: 1px solid #000000; /* negro */
+      padding: 5px;
+    }
+
+    .comentario {
+      border-bottom: 2px solid #008000; /* verde */
+      color: #ffffff; /* blanco */
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="mensaje-container">
+    <div class="mensaje-inner">Mensaje</div>
+  </div>
+
+  <div class="comentarios">
+    <div class="comentario">Comentario1</div>
+    <div class="comentario">Comentario2</div>
+    <div class="comentario">Comentario3</div>
+    <div class="comentario">Comentario4</div>
+    <div class="comentario">Comentario5</div>
+    <div class="comentario">Comentario6</div>
+  </div>
+
+</body>
 </html>
