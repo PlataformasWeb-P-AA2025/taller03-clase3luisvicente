@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      align-items: flex-start;
+    }
+    .formulario {
+      margin-right: 40px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 200px;
+      padding: 5px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      padding: 6px 12px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #f4f4f4;
+      cursor: pointer;
+    }
+    .resultado {
+      font-size: 1.5em;
+      margin-left: 20px;
+    }
+    .resultado h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="formulario">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" placeholder="Nombres">
+
+      <label for="apellido">Apellido:</label>
+      <input type="text" id="apellido" placeholder="Apellidos">
+
+      <label for="fecha">Fecha de nacimiento:</label>
+      <input type="text" id="fecha" placeholder="MM/DD/AAAA">
+
+      <br>
+      <button onclick="generarMensaje()">Generar Mensaje</button>
+    </div>
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script>
+    $(function() {
+      $("#fecha").datepicker({
+        dateFormat: "mm/dd/yy"
+      });
+    });
+
+    function generarMensaje() {
+      const nombre = document.getElementById('nombre').value;
+      const apellido = document.getElementById('apellido').value;
+      const fecha = document.getElementById('fecha').value;
+
+      const resultado = document.getElementById('resultado');
+      resultado.innerHTML = `
+        <h3>Datos ingresados</h3>
+        <div>${nombre}</div>
+        <div>${apellido}</div>
+        <div>${fecha}</div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
