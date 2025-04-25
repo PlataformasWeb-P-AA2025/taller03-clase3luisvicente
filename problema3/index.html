@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Características de países</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-family: sans-serif;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Características de países</h1>
+    <button type="button" id="obtenerInformacion">Obtener información</button>
+    <button type="button" id="vaciarTabla">Vaciar tabla</button>
+
+    <table id="tablaInformacion">
+        <thead>
+            <tr>
+                <th>CLDR</th>
+                <th>Capital</th>
+                <th>FIPS</th>
+                <th>FIFA</th>
+                <th>Continente</th>
+                <th>Idiomas</th>
+                <th>Geoname ID</th>
+                <th>DS</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            var url = "https://pkgstore.datahub.io/core/country-codes/country-codes_json/data/616b1fb83cbfd4eb6d9e7d52924bb00a/country-codes_json.json";
+
+            $("#obtenerInformacion").click(function () {
+                $.ajax({
+                    dataType: 'json',
+                    url: url,
+                    success: function (data) {
+                        var tabla = $("#tablaInformacion tbody");
+                        for (var i = 0; i < data.length; i++) {
+                            tabla.append(
+                                "<tr>" +
+                                "<td>" + (data[i]["CLDR display name"] || "N/A") + "</td>" +
+                                "<td>" + (data[i].Capital || "N/A") + "</td>" +
+                                "<td>" + (data[i].FIPS || "N/A") + "</td>" +
+                                "<td>" + (data[i].FIFA || "N/A") + "</td>" +
+                                "<td>" + (data[i].Continent || "N/A") + "</td>" +
+                                "<td>" + (data[i].Languages || "N/A") + "</td>" +
+                                "<td>" + (data[i]["Geoname ID"] || "N/A") + "</td>" +
+                                "<td>" + (data[i].DS || "N/A") + "</td>" +
+                                "</tr>"
+                            );
+                        }
+                    },
+                });
+            });
+
+            // Evento para vaciar la tabla
+            $("#vaciarTabla").click(function () {
+                $("#tablaInformacion tbody").empty(); // Vaciar el cuerpo de la tabla
+            });
+        });
+    </script>
+</body>
+
+</html>
